@@ -2,14 +2,16 @@ import {
   Table,
   Column,
   Model,
+  ForeignKey,
   DataType,
-  HasMany,
   PrimaryKey,
+  BelongsToMany,
 } from 'sequelize-typescript';
 import { Order } from '../orders/order.model';
+import { OrderService } from '../orders/orderService.model';
 
-@Table({ tableName: 'users' })
-export class User extends Model<User> {
+@Table({ tableName: 'services' })
+export class Service extends Model<Service> {
   @PrimaryKey
   @Column({
     type: DataType.INTEGER,
@@ -21,27 +23,20 @@ export class User extends Model<User> {
     type: DataType.STRING,
     allowNull: false,
   })
-  firstName: string;
+  name: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  lastName: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  phoneNumber: string;
+  description: string;
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
-    defaultValue: 0,
+    allowNull: false,
   })
-  rating: number;
+  price: number;
 
-  @HasMany(() => Order)
+  @BelongsToMany(() => Order, () => OrderService)
   orders: Order[];
 }

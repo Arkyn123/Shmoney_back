@@ -8,8 +8,8 @@ import {
 } from 'sequelize-typescript';
 import { Order } from '../orders/order.model';
 
-@Table({ tableName: 'users' })
-export class User extends Model<User> {
+@Table({ tableName: 'studios' })
+export class Studio extends Model<Studio> {
   @PrimaryKey
   @Column({
     type: DataType.INTEGER,
@@ -21,26 +21,19 @@ export class User extends Model<User> {
     type: DataType.STRING,
     allowNull: false,
   })
-  firstName: string;
+  name: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  lastName: string;
+  adress: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
   phoneNumber: string;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: true,
-    defaultValue: 0,
-  })
-  rating: number;
 
   @HasMany(() => Order)
   orders: Order[];

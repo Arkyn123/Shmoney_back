@@ -3,38 +3,56 @@ import {
   Column,
   Model,
   ForeignKey,
-  BelongsTo,
   DataType,
+  PrimaryKey,
+  BelongsToMany,
 } from 'sequelize-typescript';
 import { User } from '../users/user.model';
+import { Service } from '../services/service.model';
+import { OrderService } from './orderService.model';
+import { Studio } from 'src/studios/studio.model';
 
 @Table({ tableName: 'orders' })
 export class Order extends Model<Order> {
+  @PrimaryKey
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
+    unique: true,
+  })
+  id: number;
+
+  @Column({
+    type: DataType.DATE,
     allowNull: false,
   })
-  name: string;
+  date: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  description: string;
+  status: string;
 
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: false,
   })
-  price: number;
+  totalPrice: number;
 
   @ForeignKey(() => User)
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: true,
   })
   userId: number;
 
-  @BelongsTo(() => User)
-  user: User;
+  @ForeignKey(() => Studio)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+  })
+  studioId: number;
+
+  @BelongsToMany(() => Service, () => OrderService)
+  services: Service[];
 }

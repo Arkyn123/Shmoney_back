@@ -5,10 +5,13 @@ import {
   DataType,
   HasMany,
   PrimaryKey,
+  BelongsToMany,
 } from 'sequelize-typescript';
 import { Order } from '../orders/order.model';
+import { Role } from 'src/roles/role.model';
+import { UserRoles } from 'src/roles/userRoles.model';
 
-@Table({ tableName: 'users' })
+@Table({ tableName: 'users', timestamps: false })
 export class User extends Model<User> {
   @PrimaryKey
   @Column({
@@ -41,6 +44,9 @@ export class User extends Model<User> {
     defaultValue: 0,
   })
   rating: number;
+
+  @BelongsToMany(() => Role, () => UserRoles)
+  roles: Role[];
 
   @HasMany(() => Order)
   orders: Order[];

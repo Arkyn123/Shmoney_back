@@ -8,5 +8,5 @@ export class UsersService {
     @InjectModel(User)
     private readonly userRepository: typeof User,
   ) {}
-  async getAllUsers() {}
+  async getAll() {}
 }

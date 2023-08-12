@@ -12,7 +12,7 @@ import { Service } from '../services/service.model';
 import { OrderService } from './orderService.model';
 import { Studio } from 'src/studios/studio.model';
 
-@Table({ tableName: 'orders' })
+@Table({ tableName: 'orders', timestamps: false })
 export class Order extends Model<Order> {
   @PrimaryKey
   @Column({

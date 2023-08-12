@@ -11,8 +11,6 @@ import { Studio } from 'src/studios/studio.model';
 @Module({
   controllers: [OrdersController],
   providers: [OrdersService],
-  imports: [
-    SequelizeModule.forFeature([Order, User, Service, Studio, OrderService]),
-  ],
+  imports: [SequelizeModule.forFeature([Order])],
 })
 export class OrdersModule {}

@@ -3,23 +3,23 @@ import {
   Column,
   Model,
   DataType,
-  HasMany,
   PrimaryKey,
 } from 'sequelize-typescript';
-import { Order } from '../orders/order.model';
 
-@Table({ tableName: 'studios', timestamps: false })
-export class Studio extends Model<Studio> {
+@Table({ tableName: 'roles', timestamps: false })
+export class Role extends Model<Role> {
   @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
+    unique: true,
   })
   name: string;
 
@@ -27,14 +27,5 @@ export class Studio extends Model<Studio> {
     type: DataType.STRING,
     allowNull: false,
   })
-  adress: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  phoneNumber: string;
-
-  @HasMany(() => Order)
-  orders: Order[];
+  description: string;
 }

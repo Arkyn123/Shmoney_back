@@ -8,6 +8,6 @@ import { Order } from 'src/orders/order.model';
 @Module({
   controllers: [UsersController],
   providers: [UsersService],
-  imports: [SequelizeModule.forFeature([User, Order])],
+  imports: [SequelizeModule.forFeature([User])],
 })
 export class UsersModule {}

@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Order } from 'src/orders/order.model';
 import { OrderService } from 'src/orders/orderService.model';
+import { Role } from 'src/roles/role.model';
+import { UserRoles } from 'src/roles/userRoles.model';
 import { Service } from 'src/services/service.model';
 import { Studio } from 'src/studios/studio.model';
 import { User } from 'src/users/user.model';
@@ -17,7 +19,7 @@ import { config } from 'src/utils/config';
       password: config[process.env.NODE_ENV].database.password,
       database: config[process.env.NODE_ENV].database.database,
       autoLoadModels: true,
-      models: [User, Order, Service, Studio, OrderService],
+      models: [User, Role, Order, Service, Studio, OrderService, UserRoles],
     }),
   ],
   controllers: [],

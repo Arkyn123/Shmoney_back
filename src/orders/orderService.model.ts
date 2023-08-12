@@ -9,7 +9,7 @@ import {
 import { Order } from './order.model';
 import { Service } from '../services/service.model';
 
-@Table({ tableName: 'order_services' })
+@Table({ tableName: 'order_services', timestamps: false })
 export class OrderService extends Model<OrderService> {
   @PrimaryKey
   @Column({

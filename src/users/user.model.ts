@@ -17,6 +17,7 @@ export class User extends Model<User> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 
@@ -24,13 +25,13 @@ export class User extends Model<User> {
     type: DataType.STRING,
     allowNull: false,
   })
-  firstName: string;
+  name: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  lastName: string;
+  password: string;
 
   @Column({
     type: DataType.STRING,

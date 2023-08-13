@@ -15,6 +15,7 @@ export class OrderService extends Model<OrderService> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 

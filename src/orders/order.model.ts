@@ -18,6 +18,7 @@ export class Order extends Model<Order> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 

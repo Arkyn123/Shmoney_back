@@ -14,6 +14,7 @@ export class Studio extends Model<Studio> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 

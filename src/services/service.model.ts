@@ -16,6 +16,7 @@ export class Service extends Model<Service> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
+    autoIncrement: true,
   })
   id: number;
 
